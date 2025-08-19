@@ -1,0 +1,28 @@
+# Test Cases – QA Sample Project (No Login Required)
+
+## Overview
+These test cases focus on areas of the web application that **do not require login credentials**.  
+They demonstrate basic functionality, navigation, and usability for public-facing pages.
+
+---
+
+## Public/No-Login Test Cases
+
+| Test ID | Feature         | Steps                                           | Expected Result                                   | Actual Result | Status   |
+|---------|-----------------|-------------------------------------------------|--------------------------------------------------|---------------|----------|
+| TC-001  | Homepage Load   | Open the web application in a browser                       | Homepage loads fully without errors              |               | ✅ Pass  |
+| TC-002  | Navigation Menu | Click each menu item (e.g., About, Contact, Services)       | Each page loads correctly                        |               | ✅ Pass  |
+| TC-003  | Footer Links    | Click all footer links (Privacy, Terms, Contact)            | Each link redirects to the correct page          |               | ⚠️ Partial |
+| TC-004  | External Links  | Click external links (e.g., company blog, social media)     | Links open in a new tab without errors           |               | ✅ Pass  |
+| TC-005  | Images & Media  | Verify all images and videos on homepage display correctly  | Media loads correctly with no broken links       |               | ❌ Fail  |
+| TC-006  | Search Bar      | Enter sample keywords in search field                        | Search results display relevant content         |               | ⏸ Blocked |
+
+---
+
+## Notes
+- **Actual Result** and **Status** columns are filled during test execution.  
+- **Status Icons:**  
+  - ✅ Pass  
+  - ❌ Fail  
+  - ⚠️ Partial  
+  - ⏸ Blocked  
