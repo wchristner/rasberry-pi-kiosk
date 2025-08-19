@@ -1,18 +1,17 @@
 # rasberry-pi-kiosk
 Rasberry Pi Kiosk
 
-<ul>
-  <li><code>qa-sample-project/</code>
-    <ul>
-      <li><code>README.md</code></li>
-      <li><code>docs/</code>
-        <ul>
-          <li><code>TestPlan.md</code></li>
-          <li><code>TestCases.md</code></li>
-          <li><code>BugReports.md</code></li>
-          <li><code>TestReport.md</code></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
+
+This repository demonstrates a QA testing workflow, including planning, test execution, bug reporting, and final reporting.  
+It is designed to showcase the skills of a Junior QA Tester.
+
+---
+
+## 📂 Project Structure
+
+- **README.md** – Project overview and navigation  
+- **docs/** – Documentation folder containing detailed QA artifacts:
+  - [Test Plan](docs/TestPlan.md)  
+  - [Test Cases](docs/TestCases.md)  
+  - [Bug Reports](docs/BugReports.md)  
+  - [Test Report](docs/TestReport.md)  
