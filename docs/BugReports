@@ -8,13 +8,12 @@ These test cases focus on areas of the web application that **do not require log
 They demonstrate basic functionality, navigation, and usability for public-facing pages.
 
 | Test ID | Feature         | Steps                                           | Expected Result                                   | Actual Result | Status   |
-|---------|-----------------|-------------------------------------------------|--------------------------------------------------|---------------|----------|
-| TC-001  | Homepage Load   | Open the web application in a browser          | Homepage loads fully without errors              |               | ✅ Pass  |
-| TC-002  | Navigation Menu | Click each menu item (e.g., About, Contact, Services) | Each page loads correctly                        |               | ✅ Pass  |
-| TC-003  | Footer Links    | Click all footer links (Privacy, Terms, Contact) | Each link redirects to the correct page          |               | ⚠️ Partial |
-| TC-004  | External Links  | Click external links (e.g., company blog, social media) | Links open in a new tab without errors           |               | ✅ Pass  |
-| TC-005  | Images & Media  | Verify all images and videos on homepage display correctly | Media loads correctly with no broken links       |               | ❌ Fail  |
-| TC-006  | Search Bar      | Enter sample keywords in search field          | Search results display relevant content         |               | ⏸ Blocked |
+|---------|-----------------|------------------------------------------------- |--------------------------------------------------|---------------|----------|
+| TC-001  | Homepage Load   | Open the web application in a browser                       | Homepage loads fully without errors            | ✅ Pass  |
+| TC-002  | Navigation Menu | Click each menu item (e.g., About, Contact, Services)       | Each page loads correctly                      | ✅ Pass  |
+| TC-003  | Footer Links    | Click all footer links (Privacy, Terms, Contact)            | Each link redirects to the correct page        | ⚠️ Partial |
+| TC-005  | Images & Media  | Verify all images and videos on homepage display correctly  | Media loads correctly with no broken links     | ❌ Fail  |
+| TC-006  | Search Bar      | Enter sample keywords in the search field.                  | Search results display relevant content        | ⏸ Blocked |
 
 **Notes:**  
 - **Actual Result** and **Status** columns are filled during test execution.  
@@ -34,7 +33,7 @@ While setting up a Raspberry Pi 3B in kiosk mode using **Firefox ESR**, we encou
 - `ping clflux.com` fails, but `ping www.clflux.com` works.  
 - Firefox kiosk script launches but requires manual click to access the site.
 
-**2. Persistent Firefox Profile Issues**  
+**2 . Persistent Firefox Profile Issues**  
 - Even with a dedicated profile (`kiosk-profile`), Firefox sometimes prompts for first-run setup.  
 - Clearing cache causes the profile to reset, re-showing onboarding screens.  
 - Permissions and `user.js` settings were verified, but first-run prompts persisted in some cases.
