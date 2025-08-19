@@ -1,0 +1,82 @@
+# QA Sample Project – Test Cases & Bug Reports
+
+---
+
+## Test Cases – No Login Required
+
+These test cases focus on areas of the web application that **do not require login credentials**.  
+They demonstrate basic functionality, navigation, and usability for public-facing pages.
+
+| Test ID | Feature         | Steps                                           | Expected Result                                   | Actual Result | Status   |
+|---------|-----------------|-------------------------------------------------|--------------------------------------------------|---------------|----------|
+| TC-001  | Homepage Load   | Open the web application in a browser          | Homepage loads fully without errors              |               | ✅ Pass  |
+| TC-002  | Navigation Menu | Click each menu item (e.g., About, Contact, Services) | Each page loads correctly                        |               | ✅ Pass  |
+| TC-003  | Footer Links    | Click all footer links (Privacy, Terms, Contact) | Each link redirects to the correct page          |               | ⚠️ Partial |
+| TC-004  | External Links  | Click external links (e.g., company blog, social media) | Links open in a new tab without errors           |               | ✅ Pass  |
+| TC-005  | Images & Media  | Verify all images and videos on homepage display correctly | Media loads correctly with no broken links       |               | ❌ Fail  |
+| TC-006  | Search Bar      | Enter sample keywords in search field          | Search results display relevant content         |               | ⏸ Blocked |
+
+**Notes:**  
+- **Actual Result** and **Status** columns are filled during test execution.  
+- **Status Icons:** ✅ Pass | ❌ Fail | ⚠️ Partial | ⏸ Blocked  
+
+---
+
+## Bug Report: Raspberry Pi Kiosk – Firefox Issues
+
+### Description
+While setting up a Raspberry Pi 3B in kiosk mode using **Firefox ESR**, we encountered two issues:
+
+**1. Site Resolution Fails Without `www`**  
+- Launching `http://clflux.com` fails with:  Hmm. We’re having trouble finding that site.
+                                            We can’t connect to the server at clflux.com.
+
+- `ping clflux.com` fails, but `ping www.clflux.com` works.  
+- Firefox kiosk script launches but requires manual click to access the site.
+
+**2. Persistent Firefox Profile Issues**  
+- Even with a dedicated profile (`kiosk-profile`), Firefox sometimes prompts for first-run setup.  
+- Clearing cache causes the profile to reset, re-showing onboarding screens.  
+- Permissions and `user.js` settings were verified, but first-run prompts persisted in some cases.
+
+---
+
+### Steps to Reproduce
+1. Flash Raspberry Pi OS (Bullseye i386) on a Pi 3B.  
+2. Install Firefox ESR, `xdotool`, `Openbox`, `xbindkeys`, `unclutter`.  
+3. Create a dedicated Firefox profile at `/home/pi/.mozilla/kiosk-profile`.  
+4. Launch Firefox in kiosk mode with `http://clflux.com`.  
+5. Observe that the site does not load, and first-run prompts may appear.  
+
+---
+
+### Expected Behavior
+- Firefox should launch directly to the correct site.  
+- Persistent profile should avoid first-run prompts.  
+- Hotkeys (Ctrl+Alt+K) should reliably exit kiosk mode.  
+
+---
+
+### Actual Behavior
+- `http://clflux.com` fails to resolve; site loads only with `http://www.clflux.com`.  
+- Firefox occasionally prompts for first-run setup despite dedicated profile.  
+- Cache clearing caused profile to reset.  
+
+---
+
+### Environment
+- **Device:** Raspberry Pi 3B  
+- **OS:** 2022-07-01-raspios-bullseye-i386.iso  
+- **Firefox ESR:** 128.13.0esr (32-bit)  
+- **Scripts Used:** `/home/pi/kiosk.sh` (kiosk launcher) and `/home/pi/kiosk-hotkey.sh`  
+
+---
+
+### Workarounds / Notes
+- Updating URLs to `http://www.clflux.com` resolves the DNS issue.  
+- Using a `user.js` with the following helps with persistent profile behavior:
+```javascript
+user_pref("browser.onboarding.enabled", false);
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+user_pref("browser.startup.homepage", "http://www.clflux.com");
+Ctrl+Alt+K hotkey works reliably via xbindkeys instead of polling with xdotool.
