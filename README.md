@@ -3,7 +3,7 @@ Rasberry Pi Kiosk
 
 
 This repository demonstrates a QA testing workflow, including planning, test execution, bug reporting, and final reporting.  
-It is designed to showcase the skills of a Junior QA Tester.
+It is designed to showcase the skills of technical writing
 
 ---
 
